@@ -1,21 +1,51 @@
 package org.example.modelo.instancias;
 
-public final class EstadoTipo {
+public enum EstadoTipo {
 
-    public static final EstadoTipo RECIBIDO = new EstadoTipo("En cola");
-    public static final EstadoTipo ALMACENADO = new EstadoTipo("Almacenado");
-    public static final EstadoTipo CLASIFICANDO = new EstadoTipo("Clasificando");
-    public static final EstadoTipo CLASIFICADO = new EstadoTipo("Clasificado");
-    public static final EstadoTipo EMPAQUETANDO = new EstadoTipo("Empaquetando");
-    public static final EstadoTipo EMPAQUETADO = new EstadoTipo("Empaquetado");
-    public static final EstadoTipo EN_EXPEDICION = new EstadoTipo("En expedición");
-    public static final EstadoTipo EN_REPARTO = new EstadoTipo("En reparto");
-    public static final EstadoTipo ENTREGADO = new EstadoTipo("Entregado");
+    RECIBIDO("Recibido"),
+    ALMACENADO("Almacenado"),
+    CLASIFICANDO("Clasificando"),
+    CLASIFICADO("Clasificado"),
+    EMPAQUETANDO("Empaquetando"),
+    EMPAQUETADO("Empaquetado"),
+    EN_EXPEDICION("En expedición"),
+    EN_REPARTO("En reparto"),
+    NUEVO_INTENTO("Nuevo intento"),
+    ENTREGADO("Entregado"),
+    DEVUELTO("Devuelto");
 
-    public final String estado;
+    private final String etiqueta;
 
-    private EstadoTipo(String estado) {
-        this.estado = estado;
+    EstadoTipo(String etiqueta) {
+        this.etiqueta = etiqueta;
     }
 
+    public String getEtiqueta() {
+        return etiqueta;
+    }
+
+    public boolean puedePasarA(EstadoTipo siguiente) {
+        switch (this) {
+            case RECIBIDO:
+                return siguiente == ALMACENADO;
+            case ALMACENADO:
+                return siguiente == CLASIFICANDO;
+            case CLASIFICANDO:
+                return siguiente == CLASIFICADO;
+            case CLASIFICADO:
+                return siguiente == EMPAQUETANDO;
+            case EMPAQUETANDO:
+                return siguiente == EMPAQUETADO;
+            case EMPAQUETADO:
+                return siguiente == EN_EXPEDICION;
+            case EN_EXPEDICION:
+                return siguiente == EN_REPARTO;
+            case EN_REPARTO:
+                return siguiente == ENTREGADO || siguiente == NUEVO_INTENTO;
+            case NUEVO_INTENTO:
+                return siguiente == EN_REPARTO || siguiente == DEVUELTO;
+            default:
+                return false;
+        }
+    }
 }
