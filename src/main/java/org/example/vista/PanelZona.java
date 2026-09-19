@@ -3,7 +3,6 @@ package org.example.vista;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.example.estructura.ListaNodos;
 import org.example.estructura.Nodo;
@@ -14,9 +13,9 @@ import org.example.modelo.instancias.Paquete;
 public class PanelZona extends Tarjeta {
 
     private final Zona zona;
-    private final Label contador = crearTextoCentrado("texto-suave");
+    private final Label contador = crearTextoCentrado("texto");
     private final ProgressBar barra = new ProgressBar(0);
-    private final FlowPane paquetes = new FlowPane(6, 6);
+    private final FlowPane paquetes = new FlowPane(8, 4);
     private final VBox trabajadores = new VBox(2);
     private String claveAnterior = "";
 
@@ -27,6 +26,7 @@ public class PanelZona extends Tarjeta {
         barra.setMaxWidth(Double.MAX_VALUE);
         getChildren().addAll(contador, barra, paquetes);
         if (muestraTrabajadores) {
+            trabajadores.getStyleClass().add("lista-trabajadores");
             getChildren().add(trabajadores);
         }
     }
@@ -52,25 +52,18 @@ public class PanelZona extends Tarjeta {
         trabajadores.getChildren().clear();
         Nodo<Trabajador> nodo = lista.getPrimero();
         while (nodo != null) {
-            trabajadores.getChildren().add(crearFila(nodo.getValor()));
+            Label fila = new Label(describir(nodo.getValor()));
+            fila.getStyleClass().add("texto");
+            trabajadores.getChildren().add(fila);
             nodo = nodo.getSiguiente();
         }
     }
 
-    private HBox crearFila(Trabajador trabajador) {
-        Label nombre = new Label(trabajador.getNombre());
-        nombre.getStyleClass().add("nombre-trabajador");
-        Label detalle = new Label(describir(trabajador.getPaqueteActual()));
-        detalle.getStyleClass().add("estado-trabajador");
-        HBox fila = new HBox(nombre, detalle);
-        fila.getStyleClass().add("fila-trabajador");
-        return fila;
-    }
-
-    private String describir(Paquete paquete) {
+    private String describir(Trabajador trabajador) {
+        Paquete paquete = trabajador.getPaqueteActual();
         if (paquete == null) {
-            return "Libre";
+            return trabajador.getNombre() + ": libre";
         }
-        return paquete.getCodigo() + " · " + paquete.getEstado().getEtiqueta();
+        return trabajador.getNombre() + ": " + paquete.getCodigo() + " (" + paquete.getEstado().getEtiqueta() + ")";
     }
 }

@@ -19,10 +19,10 @@ public class Repartidor extends Trabajador {
     private static final int INTENTOS_MAXIMOS = 3;
     private static final int ESPERAS_MAXIMAS = 3;
     private static final int PROBABILIDAD_AUSENTE = 30;
-    private static final long TIEMPO_ESPERA_CARGA = 2000;
-    private static final long TIEMPO_VIAJE = 2000;
-    private static final long TIEMPO_ENTREGA = 1000;
-    private static final long TIEMPO_REGRESO = 1200;
+    private static final long TIEMPO_ESPERA_CARGA = 2500;
+    private static final long TIEMPO_VIAJE = 3000;
+    private static final long TIEMPO_ENTREGA = 1500;
+    private static final long TIEMPO_REGRESO = 2000;
 
     private final String conductor;
     private final Ruta ruta;
@@ -58,6 +58,7 @@ public class Repartidor extends Trabajador {
     private void cargarVehiculo() throws InterruptedException, PaqueteException {
         cambiarEstado(EstadoRepartidor.DISPONIBLE);
         Paquete primero = expedicion.sacarDeRuta(ruta);
+        esperarSiPausado();
         cambiarEstado(EstadoRepartidor.CARGANDO);
         cargar(primero);
         int esperas = 0;

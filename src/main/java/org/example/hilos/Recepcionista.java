@@ -9,8 +9,8 @@ import org.example.modelo.instancias.Paquete;
 
 public class Recepcionista extends Trabajador {
 
-    private static final long INTERVALO_MINIMO = 400;
-    private static final int INTERVALO_VARIABLE = 1600;
+    private static final long INTERVALO_MINIMO = 1000;
+    private static final int INTERVALO_VARIABLE = 2500;
 
     private final GeneradorPaquetes generador;
     private final Zona recepcion;

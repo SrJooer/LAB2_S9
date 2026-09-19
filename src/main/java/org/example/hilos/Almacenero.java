@@ -8,7 +8,7 @@ import org.example.modelo.instancias.Paquete;
 
 public class Almacenero extends Trabajador {
 
-    private static final long TIEMPO_TRASLADO = 1100;
+    private static final long TIEMPO_TRASLADO = 1500;
 
     private final Zona recepcion;
     private final Zona almacen;
@@ -22,6 +22,7 @@ public class Almacenero extends Trabajador {
     @Override
     protected void trabajar() throws InterruptedException, PaqueteException {
         Paquete paquete = recepcion.sacarMasPrioritario(EstadoTipo.RECIBIDO);
+        esperarSiPausado();
         setPaqueteActual(paquete);
         dormir(TIEMPO_TRASLADO);
         paquete.cambiarEstado(EstadoTipo.ALMACENADO);

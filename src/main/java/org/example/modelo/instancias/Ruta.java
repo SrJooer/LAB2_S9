@@ -9,6 +9,10 @@ public enum Ruta {
     RUTA_3("Ruta 3"),
     RUTA_4("Ruta 4");
 
+    public static final String[] CIUDADES = {
+            "Barcelona Centro", "Eixample", "Gràcia", "Sant Martí", "Badalona"
+    };
+
     private final String etiqueta;
 
     Ruta(String etiqueta) {

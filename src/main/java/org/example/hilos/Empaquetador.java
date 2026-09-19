@@ -22,6 +22,7 @@ public class Empaquetador extends Trabajador {
     @Override
     protected void trabajar() throws InterruptedException, PaqueteException {
         Paquete paquete = clasificacion.sacarMasPrioritario(EstadoTipo.CLASIFICADO);
+        esperarSiPausado();
         setPaqueteActual(paquete);
         paquete.cambiarEstado(EstadoTipo.EMPAQUETANDO);
         empaquetado.meter(paquete);

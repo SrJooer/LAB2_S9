@@ -13,7 +13,7 @@ import org.example.modelo.instancias.Ruta;
 public class PanelExpedicion extends Tarjeta {
 
     private final Zona expedicion;
-    private final Label contador = crearTextoCentrado("texto-suave");
+    private final Label contador = crearTextoCentrado("texto");
     private final VBox[] columnas = new VBox[Ruta.values().length];
     private final Label[] cabeceras = new Label[Ruta.values().length];
     private String claveAnterior = "";
@@ -21,7 +21,7 @@ public class PanelExpedicion extends Tarjeta {
     public PanelExpedicion(Zona expedicion) {
         super(expedicion.getNombre());
         this.expedicion = expedicion;
-        HBox rutas = new HBox(10);
+        HBox rutas = new HBox(16);
         for (int posicion = 0; posicion < columnas.length; posicion++) {
             rutas.getChildren().add(crearColumna(posicion));
         }
@@ -30,10 +30,9 @@ public class PanelExpedicion extends Tarjeta {
 
     private VBox crearColumna(int posicion) {
         cabeceras[posicion] = new Label();
-        cabeceras[posicion].getStyleClass().add("cabecera-ruta");
-        columnas[posicion] = new VBox(4);
-        VBox columna = new VBox(6, cabeceras[posicion], columnas[posicion]);
-        columna.getStyleClass().add("columna-ruta");
+        cabeceras[posicion].getStyleClass().add("texto-negrita");
+        columnas[posicion] = new VBox(2);
+        VBox columna = new VBox(4, cabeceras[posicion], columnas[posicion]);
         HBox.setHgrow(columna, Priority.ALWAYS);
         columna.setMaxWidth(Double.MAX_VALUE);
         return columna;
@@ -58,7 +57,7 @@ public class PanelExpedicion extends Tarjeta {
         }
         for (int posicion = 0; posicion < columnas.length; posicion++) {
             int cantidad = columnas[posicion].getChildren().size();
-            cabeceras[posicion].setText(Ruta.values()[posicion].getEtiqueta() + " · " + cantidad);
+            cabeceras[posicion].setText(Ruta.values()[posicion].getEtiqueta() + ": " + cantidad);
         }
     }
 }

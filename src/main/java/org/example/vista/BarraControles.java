@@ -21,7 +21,6 @@ public class BarraControles extends Tarjeta {
         this.sistema = sistema;
         titulo.getStyleClass().add("titulo-app");
 
-        iniciar.getStyleClass().add("boton-principal");
         iniciar.setOnAction(evento -> ejecutar(() -> sistema.iniciar()));
         pausar.setOnAction(evento -> ejecutar(() -> sistema.pausar()));
         reanudar.setOnAction(evento -> ejecutar(() -> sistema.reanudar()));

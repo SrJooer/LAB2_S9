@@ -1,175 +1,108 @@
 .ventana {
     -fx-background-color: white;
-    -fx-font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-    -fx-font-size: 13px;
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
 }
 
 .tarjeta {
     -fx-background-color: white;
-    -fx-border-color: #D1D5DB;
+    -fx-border-color: #808080;
     -fx-border-width: 1;
-    -fx-padding: 10 12 12 12;
-    -fx-spacing: 8;
+    -fx-padding: 8 10 10 10;
+    -fx-spacing: 6;
 }
 
 .titulo-tarjeta {
-    -fx-font-size: 12px;
     -fx-font-weight: bold;
-    -fx-text-fill: #374151;
-    -fx-padding: 0 0 8 0;
-    -fx-border-color: transparent transparent #E5E7EB transparent;
+    -fx-text-fill: black;
+    -fx-padding: 0 0 6 0;
+    -fx-border-color: transparent transparent #808080 transparent;
     -fx-border-width: 0 0 1 0;
 }
 
 .titulo-app {
-    -fx-font-size: 16px;
-    -fx-text-fill: #111827;
+    -fx-font-size: 15px;
 }
 
 .subtitulo {
-    -fx-font-size: 11px;
     -fx-font-weight: bold;
-    -fx-text-fill: #6B7280;
+    -fx-text-fill: black;
     -fx-padding: 8 0 0 0;
+}
+
+.texto {
+    -fx-text-fill: black;
+}
+
+.texto-negrita {
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
 }
 
 .boton {
     -fx-background-color: white;
     -fx-background-radius: 0;
-    -fx-border-color: #9CA3AF;
+    -fx-border-color: #808080;
     -fx-border-radius: 0;
-    -fx-text-fill: #111827;
-    -fx-padding: 6 18;
-    -fx-cursor: hand;
+    -fx-text-fill: black;
+    -fx-padding: 5 16;
 }
 
 .boton:hover {
-    -fx-background-color: #F3F4F6;
+    -fx-background-color: #E8E8E8;
 }
 
 .boton:disabled {
-    -fx-opacity: 0.35;
-}
-
-.boton-principal {
-    -fx-background-color: #111827;
-    -fx-border-color: #111827;
-    -fx-text-fill: white;
-}
-
-.boton-principal:hover {
-    -fx-background-color: #1F2937;
-}
-
-.texto-suave {
-    -fx-font-size: 12px;
-    -fx-text-fill: #6B7280;
-}
-
-.valor-estadistica {
-    -fx-font-size: 22px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
-}
-
-.valor-pequeno {
-    -fx-font-size: 13px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+    -fx-opacity: 0.4;
 }
 
 .barra-progreso {
-    -fx-pref-height: 6px;
-    -fx-min-height: 6px;
+    -fx-pref-height: 8px;
+    -fx-min-height: 8px;
 }
 
 .barra-progreso > .track {
-    -fx-background-color: #F3F4F6;
+    -fx-background-color: white;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
+    -fx-border-color: #808080;
 }
 
 .barra-progreso > .bar {
-    -fx-background-color: #111827;
+    -fx-background-color: #404040;
     -fx-background-radius: 0;
-    -fx-background-insets: 0;
+    -fx-background-insets: 1;
     -fx-padding: 3;
 }
 
 .etiqueta-paquete {
-    -fx-background-color: #F9FAFB;
-    -fx-background-radius: 0;
-    -fx-border-color: #E5E7EB;
-    -fx-border-radius: 0;
-    -fx-padding: 3 8;
-    -fx-spacing: 6;
-    -fx-alignment: center-left;
-}
-
-.etiqueta-paquete .label {
-    -fx-font-family: "Consolas", "Menlo", monospace;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
     -fx-font-size: 11px;
-    -fx-text-fill: #111827;
+    -fx-text-fill: black;
 }
 
-.fila-trabajador {
-    -fx-spacing: 8;
-    -fx-alignment: center-left;
-    -fx-padding: 5 0 3 0;
-    -fx-border-color: #F3F4F6 transparent transparent transparent;
-}
-
-.nombre-trabajador {
-    -fx-font-size: 12px;
-    -fx-text-fill: #374151;
-    -fx-min-width: 105px;
-}
-
-.estado-trabajador {
-    -fx-font-size: 12px;
-    -fx-text-fill: #6B7280;
-}
-
-.cabecera-ruta {
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #374151;
-}
-
-.columna-ruta {
-    -fx-background-color: #FAFAFA;
-    -fx-border-color: #E5E7EB;
-    -fx-padding: 10;
-}
-
-.tarjeta-repartidor {
-    -fx-background-color: #FAFAFA;
-    -fx-border-color: #E5E7EB;
-    -fx-padding: 12;
-}
-
-.nombre-repartidor {
-    -fx-font-size: 13px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #111827;
+.lista-trabajadores {
+    -fx-padding: 6 0 0 0;
+    -fx-border-color: #C0C0C0 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
 }
 
 .area-registro {
-    -fx-font-family: "Consolas", "Menlo", monospace;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
     -fx-font-size: 11px;
-    -fx-text-fill: #374151;
-    -fx-background-color: #FAFAFA;
+    -fx-text-fill: black;
+    -fx-background-color: white;
     -fx-background-radius: 0;
     -fx-background-insets: 0;
-    -fx-border-color: #E5E7EB;
+    -fx-border-color: #808080;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
 
 .area-registro .content {
-    -fx-background-color: #FAFAFA;
+    -fx-background-color: white;
     -fx-background-radius: 0;
-    -fx-padding: 8;
+    -fx-padding: 6;
 }
 
 .area-registro .scroll-pane {
@@ -177,11 +110,13 @@
 }
 
 .tooltip {
-    -fx-background-color: #111827;
-    -fx-text-fill: white;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-family: "Arial";
     -fx-font-size: 11px;
     -fx-background-radius: 0;
-    -fx-padding: 6 10;
+    -fx-border-color: #808080;
+    -fx-padding: 6 8;
 }
 
 .desplazable {

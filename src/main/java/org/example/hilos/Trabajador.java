@@ -26,7 +26,7 @@ public abstract class Trabajador implements Runnable {
     public void run() {
         try {
             while (control.estaActivo()) {
-                control.esperarSiPausado();
+                esperarSiPausado();
                 try {
                     trabajar();
                 } catch (PaqueteException e) {
@@ -45,10 +45,14 @@ public abstract class Trabajador implements Runnable {
         setPaqueteActual(null);
     }
 
+    protected void esperarSiPausado() throws InterruptedException {
+        control.esperarSiPausado();
+    }
+
     protected void dormir(long milisegundos) throws InterruptedException {
-        control.esperarSiPausado();
+        esperarSiPausado();
         Thread.sleep(milisegundos);
-        control.esperarSiPausado();
+        esperarSiPausado();
     }
 
     protected void registrar(String mensaje) {

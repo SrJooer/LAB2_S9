@@ -9,7 +9,7 @@ import org.example.modelo.instancias.Ruta;
 
 public class Clasificador extends Trabajador {
 
-    private static final long TIEMPO_CLASIFICACION = 3500;
+    private static final long TIEMPO_CLASIFICACION = 4000;
 
     private final Zona almacen;
     private final Zona clasificacion;
@@ -23,6 +23,7 @@ public class Clasificador extends Trabajador {
     @Override
     protected void trabajar() throws InterruptedException, PaqueteException {
         Paquete paquete = almacen.sacarMasPrioritario(EstadoTipo.ALMACENADO);
+        esperarSiPausado();
         setPaqueteActual(paquete);
         paquete.cambiarEstado(EstadoTipo.CLASIFICANDO);
         clasificacion.meter(paquete);
@@ -32,7 +33,7 @@ public class Clasificador extends Trabajador {
         paquete.setRuta(ruta);
         paquete.cambiarEstado(EstadoTipo.CLASIFICADO);
         clasificacion.avisarCambio();
-        registrar(paquete.getCodigo() + " clasificado → " + ruta.getEtiqueta());
+        registrar(paquete.getCodigo() + " clasificado, asignado a " + ruta.getEtiqueta());
         setPaqueteActual(null);
     }
 }

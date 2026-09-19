@@ -8,8 +8,8 @@ import org.example.modelo.Sistema;
 
 public class VentanaEstadisticas extends Stage {
 
-    private static final double ANCHO = 520;
-    private static final double ALTO = 330;
+    private static final double ANCHO = 420;
+    private static final double ALTO = 300;
 
     private final PanelEstadisticas panel;
 
